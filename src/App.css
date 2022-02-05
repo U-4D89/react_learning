@@ -1,0 +1,12 @@
+* { font-family: 'Montserrat', sans-serif; }
+
+#nav-bar { background-color: #6B8D50; }
+#title-banner { color: #F8F8F8; }
+
+a { 
+  color: #F8F8F8;
+  text-decoration: none; 
+}
+
+li { list-style: none; }
+i { color: #F8F8F8; }
