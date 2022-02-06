@@ -1,66 +1,65 @@
 import './App.css';
-import React from 'react';
+import React, { Component } from 'react';
 
-function Header(props) {
-  return(
-    <div id="nav-bar">
-      <h1 id="title-banner">Cuymmunity!</h1>
-      {/* <p>hola {props.text} !</p> */}
-      <ul>
-        <li> <a href='directorio'>Directorio</a> </li>
-        <li> <a href='Sugerir'>Sugerir Negocio</a> </li>
-        <i className='material-icons'>person</i>
-      </ul>
-    </div>
-      
-  )
-};
-
-class Helloworld extends React.Component {
-
-  state = {
-    show: true
+class Square extends Component {
+  render() {
+    return (
+      <button className='square'>
+        {/* some code more here */}
+      </button>
+    )
   }
+}
 
-  visibility() {
-    if ( this.state.show === true ){
-      this.setState({ show:false })
-    } else {
-      this.setState({ show: true })
-    }
-    
+
+class Board extends React.Component {
+  renderSquare(i) {
+    return <Square />;
   }
 
   render() {
-    if (this.state.show === true) {
-      return (
-        <div>
-          <h3> {this.props.title} </h3>
-          {this.props.subtitle}
-          <button onClick={() => this.visibility()}>Try</button>
-        </div>
-        
-      )
-    } else {
-      return (
-        <div>
-          <h3>{this.props.subtitle}</h3>
-          <button onClick={() => this.visibility()} >Make me visible</button>
-        </div>
-        
-      )
-    }
-  }
-};
+    const status = 'Next player: X';
 
-function App() {
-  return (
-    <div>
-      <Header text="Qi" />
-      <Helloworld title="Make me invisble!!" subtitle=""/>
-    </div>
-    
-  );
+    return (
+      <div>
+        <div className="status">{status}</div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+
+class Game extends React.Component {
+  render() {
+    return (
+      <div className="game">
+        <div className="game-board">
+          <Board />
+        </div>
+        <div className="game-info">
+          <div>{/* status */}</div>
+          <ol>{/* TODO */}</ol>
+        </div>
+      </div>
+    );
+  }
+}
+
+
+
+export default Game;
